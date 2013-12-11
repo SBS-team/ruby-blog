@@ -4,6 +4,9 @@ class TagsController < ApplicationController
     @posts = Post.includes(:tags, :admin).where('tags.name = ?', tag_params[:name]).enabled.order("posts.created_at DESC").paginate(:per_page => 5, :page => params[:page])
     render :template => "users/index"
   end
+  def open
+    @text = File.open("./robots.txt").read
+  end
 
   private
 
