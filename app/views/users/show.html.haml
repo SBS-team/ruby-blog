@@ -20,12 +20,6 @@
   .comments
     %h2
       Leave a comment
-    %script{src: "http://vkontakte.ru/js/api/xd_connection.js?20", type: "text/javascript"}
-      %body
-        #vk_comments
-        %script{language: "javascript", type: "text/javascript"}
-          :cdata
-            VK.Widgets.Comments('vk_comments', {limit: 10, width: '627', attach: '*'});
     .comment
       = form_for :comment, :url => create_comment_path, :html => {:id => "comment"} do |f|
         %strong
@@ -40,6 +34,7 @@
           .captcha_field
             = render :partial => "captcha"
           .clear
+  = render :partial => "fb"
   .clear
   %center.g_banner
     = render :partial => "banner_big"
