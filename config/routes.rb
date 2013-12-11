@@ -10,6 +10,7 @@ RubyBlog::Application.routes.draw do
   get "/search" => "search#index"
 
   get "/categories/:name" => "tags#index", :as => :tags
+  get "/robots.txt"
 
   namespace :administration do
     resources :admins
