@@ -5,7 +5,7 @@ class TagsController < ApplicationController
     render :template => "users/index"
   end
   def open
-    @text = File.open("./robots.txt").read
+    render :text => File.open("./robots.txt").read
   end
 
   private
