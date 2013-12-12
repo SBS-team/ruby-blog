@@ -1,0 +1,8 @@
+.right-block-bg
+  .title-angle-text
+    Search
+  = form_tag search_path, method: :get do
+    .search-form
+      = text_field_tag :request, nil, class: 'search-input'
+      = link_to "Search", "javascript: void(0);", :id => "submit-search", class: 'search-button'
+      = hidden_field_tag :category, "in posts"
