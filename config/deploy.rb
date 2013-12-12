@@ -14,8 +14,8 @@ set :repository,  'git@github.com:intale/ruby-blog.git' # Path to your repositor
 set :deploy_via, :remote_cache # Using cache. Deploying only changes.
 
 set :stages,          %w(preproduction production)
-#set :default_stage,   'preproduction'
-set :default_stage,    'production'
+set :default_stage,   'preproduction'
+#set :default_stage,    'production'
 set :keep_releases, 3
 
 set :migrate_target, :latest
@@ -58,7 +58,7 @@ end
 
 namespace :deploy do
   task :db_create do
-    run "cd #{release_path}; RAILS_ENV=production rake db:create"
+    run "cd #{release_path}; RAILS_ENV=preproduction rake db:create"
   end
 end
 
