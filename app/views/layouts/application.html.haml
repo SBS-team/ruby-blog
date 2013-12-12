@@ -46,8 +46,7 @@
             .right-block
               %h3.right-block-title
                 Categories
-              .r-menu
-                %ul
+              %ul
                 - @tags.each do |tag|
                   %li= link_to tag.name, tags_path(tag.name)
           .content
