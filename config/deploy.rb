@@ -10,7 +10,7 @@ ssh_options[:forward_agent] = true
 ssh_options[:auth_methods] = ['publickey']
 
 set :scm, :git # Using git.
-set :repository,  'git@github.com:intale/ruby-blog.git' # Path to your repository
+set :repository,  'git@github.com:SBS-team/ruby-blog.git' # Path to your repository
 set :deploy_via, :remote_cache # Using cache. Deploying only changes.
 
 set :stages,          %w(preproduction production)
