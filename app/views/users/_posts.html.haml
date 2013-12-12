@@ -12,6 +12,8 @@
       .clear
       .more
         =link_to "Read More", show_post_comments_path(post)
+        - @post_like = post
+        = render partial: 'users/social_section', :title => "I wanna share"
         %div{:style => "float:left;"}
           - unless post.tags.empty?
             - post.tags.each do |tag|

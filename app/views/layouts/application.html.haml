@@ -63,6 +63,15 @@
           .clear
         / C O N T E N T  end
     / /main styles
+    #fb-root
+    :javascript
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=#{OORConstant.facebook_app_id}";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
     / F O O T E R  start
     .footer
       Copyright &copy; #{Time.now.year} Ruby Blog by #{link_to "Max Dolgih", "https://github.com/hiddenfile", :rel => "nofollow"} & #{link_to "Ivan Dzyzenko", "https://github.com/intale", :rel => "nofollow"}
