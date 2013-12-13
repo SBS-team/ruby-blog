@@ -6,23 +6,14 @@
         .post-date-month= post.created_at.strftime('%B')
       .post-title
         %h2
-          =link_to post.subject, show_post_comments_path(post)
+          =link_to post.subject, show_post_comments_path(post), class: 'link-large'
         .posted-by
           %span By
           %b= post.admin.nick
           %span= "on #{post.created_at.strftime('%d %b %Y %H:%M')}"
-          =# time_ago_in_words(post.created_at)
-      .post-description
-        = raw truncate_html(post)
-      .post-btn-more
-        =link_to 'read more', show_post_comments_path(post)
-      %div{:style => "float:left;"}
-        - unless post.tags.empty?
-          - post.tags.each do |tag|
-            |
-            = link_to tag.name, tags_path(tag.name)
-          |
-  .pager
-    =will_paginate posts, :class => "pager", :previous_label => '', :next_label => '', :link_separator => ' - '
-    .clear
-  .clear
+      .post-like-buttons
+        Like
+      .post-description-short
+        = post.message
+      =link_to 'read more', show_post_comments_path(post), class: 'btn-red-small'
+  = will_paginate posts, class: 'posts-pager', previous_label: '', next_label: '', link_separator: ' - '

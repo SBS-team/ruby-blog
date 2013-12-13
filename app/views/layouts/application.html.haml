@@ -44,12 +44,13 @@
           .right-content
             = render partial: 'shared/search_form'
             .right-block
-              %h3.right-block-title
+              %h3.rb-title
                 Categories
-              %ul
-                - @tags.each do |tag|
-                  %li= link_to tag.name, tags_path(tag.name)
+              .rb-content
+                %ul.links-list
+                  - @tags.each do |tag|
+                    %li= link_to(tag.name, tags_path(tag.name))
           .content
             = yield
       .footer
-        Copyright &copy; #{Time.now.year} Ruby Blog by #{link_to "Max Dolgih", "https://github.com/hiddenfile", :rel => "nofollow"} & #{link_to "Ivan Dzyzenko", "https://github.com/intale", :rel => "nofollow"}
+        Copyright &copy; #{Time.now.year} Ruby Blog by #{link_to 'Max Dolgih', 'https://github.com/hiddenfile', rel: 'nofollow'} & #{link_to 'Ivan Dzyzenko', 'https://github.com/intale', rel: 'nofollow'}

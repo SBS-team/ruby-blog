@@ -1,15 +1,22 @@
-.center
-  .item
+.post
+  .post-date
+    .post-date-num= @post.created_at.strftime('%d')
+    .post-date-month= @post.created_at.strftime('%B')
+  .post-like-buttons
+    Like
+  .post-title-with-btn
     %h2
-      = @post.subject
-    .by
-      ="Posted by #{@post.admin.nick}@#{@post.created_at}"
+      =@post.subject
+    .posted-by
+      %span By
+      %b= @post.admin.nick
+      %span= "on #{@post.created_at.strftime('%d %b %Y %H:%M')}"
+  .post-description
     = raw @post.message
-    .more
-      &nbsp;
-      - @post.tags.all.each do |tag|
-        |
-        = link_to tag.name, tags_path(tag.name)
+  .post-tags
+    - @post.tags.all.each do |tag|
+      |
+      = link_to tag.name, tags_path(tag.name)
   %g:plusone{:size => "medium"}
   .comments
     %h2
