@@ -12,7 +12,11 @@
           %b= post.admin.nick
           %span= "on #{post.created_at.strftime('%d %b %Y %H:%M')}"
       .post-like-buttons
-        Like
+        #vk_like
+          :javascript
+            VK.Widgets.Like("vk_like", {type: "mini"});
+          - @post_like = post
+          = render partial: 'users/social_section', :title => "I wanna share"
       .post-description-short
         = post.message
       =link_to 'read more', show_post_comments_path(post), class: 'btn-red-small'

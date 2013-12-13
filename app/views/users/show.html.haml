@@ -3,7 +3,11 @@
     .post-date-num= @post.created_at.strftime('%d')
     .post-date-month= @post.created_at.strftime('%B')
   .post-like-buttons
-    Like
+    #vk_like
+      :javascript
+        VK.Widgets.Like("vk_like", {type: "mini"});
+      - @post_like = @post
+      = render partial: 'users/social_section', :title => "I wanna share"
   .post-title-with-btn
     %h2
       =@post.subject
@@ -17,29 +21,38 @@
     - @post.tags.all.each do |tag|
       |
       = link_to tag.name, tags_path(tag.name)
-  %g:plusone{:size => "medium"}
   .comments
     %h2
       Comments
+  %ul.tabs
+
+    %li
+      %a{href: "#comment"} Comments
+    %li
+      %a{href: "#fb"} Facebook Comment
     - @post.comments.each do |comment|
       = render :partial => 'comment', :locals => {:comment => comment}
-  .clear
-  .comments
-    %h2
-      Leave a comment
-    .comment
-      = form_for :comment, :url => create_comment_path, :html => {:id => "comment"} do |f|
-        %strong
-          =f.label :author
-          =f.text_field :author, :value => current_admin.try(:nick)
-        .avatar
-          %span
-        .message
-          =f.text_area :content
-        .submit
-          =f.submit :save
-          .captcha_field
-            = render :partial => "captcha"
+    .clear
+    .tabs-content
+      %ul
+        %li#comment
+          %h2
+            Leave a comment
+          .comment
+            = form_for :comment, :url => create_comment_path, :html => {:id => "comment"} do |f|
+              %strong
+                =f.label :author
+                =f.text_field :author, :value => current_admin.try(:nick)
+              .avatar
+                %span
+                .message
+                  =f.text_area :content
+                  .submit
+                    =f.submit :save
+                    .captcha_field
+                      = render :partial => "captcha"
+        %li#fb
+          = render :partial => "fb"
           .clear
   .clear
   %center.g_banner

@@ -295,26 +295,35 @@ ul.links-list {
 
     a {
       padding: 10px 0 0 35px;
-      font: 22px Arial, Helvetica, sans-serif;
+      font: 16px Arial, Helvetica, sans-serif;
       font-weight: bold;
       color: #0185c3;
       text-decoration: none;
       background: asset_url('base/list_sprite.png') no-repeat;
-      background-position: 0 -36px;
+      background-position: 0 -40px;
     }
 
     a:hover {
       color: #ff0000;
-      background-position: 0 -86px;
+      background-position: 0 -90px;
     }
 
     .active-link {
-      background-position: 0 14px;
+      background-position: 0 10px;
       color: #000000;
     }
   }
 }
 // ========================= Links ========================= //
+a {
+  color: #0185c3;
+}
+
+a:hover {
+  color: #ff0000;
+  text-decoration: none;
+}
+
 a.link-large {
   font-size: 22px;
   font-weight: bold;
