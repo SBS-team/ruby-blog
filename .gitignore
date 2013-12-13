@@ -6,7 +6,7 @@ tmp/
 .idea/*
 nbproject/*
 config/database.yml
-config/*.yml
+config/application.yml
 public/ckeditor_assets/*
 db/schema.rb
 app/assets/images/avatar/*
