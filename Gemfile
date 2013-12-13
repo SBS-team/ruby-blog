@@ -25,13 +25,14 @@ gem 'ckeditor'
 gem 'paperclip', '~> 2.4'
 gem 'nokogiri', :require => 'nokogiri'
 gem 'simple_captcha', :git => 'git://github.com/Azdaroth/simple-captcha.git', :branch => 'rails-4'
+gem 'social-buttons', git: 'git://github.com/kristianmandrup/social-buttons.git'
 
 # Use unicorn as the web server
 gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'
-gem "rvm-capistrano"
+gem 'rvm-capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
