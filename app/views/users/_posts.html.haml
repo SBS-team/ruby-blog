@@ -1,5 +1,6 @@
 .posts
   - posts.each do |post|
+    - @post_like = post
     .post
       .post-date
         .post-date-num= post.created_at.strftime('%d')
@@ -15,7 +16,6 @@
         #vk_like
           :javascript
             VK.Widgets.Like("vk_like", {type: "mini"});
-        - @post_like = post
         = render partial: 'users/social_section', :title => "I wanna share"
       .post-description-short
         = post.message
