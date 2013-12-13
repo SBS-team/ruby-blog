@@ -10,7 +10,7 @@ ssh_options[:forward_agent] = true
 ssh_options[:auth_methods] = ['publickey']
 
 set :scm, :git # Using git.
-set :repository,  'git@github.com:intale/ruby-blog.git' # Path to your repository
+set :repository,  'git@github.com:SBS-team/ruby-blog.git' # Path to your repository
 set :deploy_via, :remote_cache # Using cache. Deploying only changes.
 
 set :stages,          %w(preproduction production)
@@ -60,7 +60,12 @@ namespace :deploy do
   task :db_create do
     run "cd #{release_path}; RAILS_ENV=preproduction rake db:create"
   end
+  task :cope_with_git_repo_relocation do
+    run "if [ -d #{shared_path}/cached-copy ]; then cd #{shared_path}/cached-copy && git remote set-url origin #{repository}; else true; fi"
+  end
 end
+
+before "deploy:update_code", "deploy:cope_with_git_repo_relocation"
 
 desc 'tail production log files'
 task :tail_logs, roles: :app do

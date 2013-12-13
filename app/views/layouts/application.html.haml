@@ -2,14 +2,16 @@
 %html{:dir => "ltr", :xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     %title= meta_content[:title]
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
     %meta{:content => meta_content[:keywords], :name => "keywords"}
-    %meta{:content => meta_content[:description], :name => "description"}/
+    %meta{:content => meta_content[:description], :name => "description"}
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = javascript_include_tag "https://apis.google.com/js/plusone.js"
+    = javascript_include_tag "//vk.com/js/api/openapi.js?105", type: "text/javascript"
     = csrf_meta_tags
     :javascript
+      VK.init({apiId: API_ID, onlyWidgets: true});
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-26174162-1']);
       _gaq.push(['_setDomainName', 'is-valid.org']);
@@ -63,6 +65,15 @@
           .clear
         / C O N T E N T  end
     / /main styles
+    #fb-root
+    :javascript
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=#{OORConstant.facebook_app_id}";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
     / F O O T E R  start
     .footer
       Copyright &copy; #{Time.now.year} Ruby Blog by #{link_to "Max Dolgih", "https://github.com/hiddenfile", :rel => "nofollow"} & #{link_to "Ivan Dzyzenko", "https://github.com/intale", :rel => "nofollow"}
