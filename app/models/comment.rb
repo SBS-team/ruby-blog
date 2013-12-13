@@ -20,8 +20,8 @@ class Comment < ActiveRecord::Base
   end
 
   def check_author
-    nick = Admin.select(:nick).where(:nick => self.author.strip.downcase)
-    errors.add(:author, "Nick #{self.author} has already been taken by admin") if nick && !self.current_admin
+    nick = Admin.select(:nick).where(:nick => self.author.strip.downcase).all
+    errors.add(:author, "Nick #{self.author} has already been taken by admin") if !nick.blank? && !self.current_admin
   end
 
 end
