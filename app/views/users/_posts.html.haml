@@ -1,30 +1,23 @@
-.center
+.posts
   - posts.each do |post|
-    .item
-      %h2
-        =link_to post.subject, show_post_comments_path(post)
-      .by
-        ="Posted by"
-        %span.admin_span{:style=>"color: green;"} #{post.admin.nick}
-        =time_ago_in_words(post.created_at)
-        ago
-      = raw truncate_html(post)
-      .clear
-      .more
-        =link_to "Read More", show_post_comments_path(post)
+    .post
+      .post-date
+        .post-date-num= post.created_at.strftime('%d')
+        .post-date-month= post.created_at.strftime('%B')
+      .post-title
+        %h2
+          =link_to post.subject, show_post_comments_path(post), class: 'link-large'
+        .posted-by
+          %span By
+          %b= post.admin.nick
+          %span= "on #{post.created_at.strftime('%d %b %Y %H:%M')}"
+      .post-like-buttons
         #vk_like
-        :javascript
-          VK.Widgets.Like("vk_like", {type: "mini"});
-        - @post_like = post
-        = render partial: 'users/social_section', :title => "I wanna share"
-        %div{:style => "float:left;"}
-          - unless post.tags.empty?
-            - post.tags.each do |tag|
-              |
-              = link_to tag.name, tags_path(tag.name)
-            |
-
-  .pager
-    =will_paginate posts, :class => "pager", :previous_label => '', :next_label => '', :link_separator => ' - '
-    .clear
-  .clear
+          :javascript
+            VK.Widgets.Like("vk_like", {type: "mini"});
+          - @post_like = post
+          = render partial: 'users/social_section', :title => "I wanna share"
+      .post-description-short
+        = post.message
+      =link_to 'read more', show_post_comments_path(post), class: 'btn-red-small'
+  = will_paginate posts, class: 'posts-pager', previous_label: '', next_label: '', link_separator: ' - '
