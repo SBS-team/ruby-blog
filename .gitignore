@@ -12,3 +12,4 @@ db/schema.rb
 app/assets/images/avatar/*
 public/assets/*
 public/sitemaps/*
+*~
