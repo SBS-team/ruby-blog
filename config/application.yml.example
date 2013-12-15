@@ -11,6 +11,8 @@ development:
       password: ""
       authentication: "plain"
       enable_starttls_auto: true
+  redis:
+    url: 'localhost:6379'
 
 production:
   mailer:
@@ -25,3 +27,5 @@ production:
       password: ""
       authentication: "plain"
       enable_starttls_auto: true
+  redis:
+    url: 'localhost:6379'
