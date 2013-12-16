@@ -1,6 +1,10 @@
+require 'resque/server'
 RubyBlog::Application.routes.draw do
   devise_for :admins
   root :to => 'users#index'
+  authenticate :admin do
+    mount Resque::Server.new, :at => "/resque"
+  end
   scope "/" do
     get "/post/:id" => "users#show", :as => :show_post_comments
     post "/post/:id" => "users#create", :as => :create_comment

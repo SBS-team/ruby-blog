@@ -5,10 +5,10 @@ tmp/
 .sass-cache/
 .idea/*
 nbproject/*
-config/database.yml
-config/application.yml
+config/*.yml
 public/ckeditor_assets/*
 db/schema.rb
 app/assets/images/avatar/*
 public/assets/*
 public/sitemaps/*
+*~
