@@ -1,10 +1,11 @@
 class Post < ActiveRecord::Base
-
+  extend FriendlyId
+  friendly_id :subject, use: :slugged
   belongs_to :admin
   has_many :comments, :dependent => :destroy
   has_and_belongs_to_many :tags
 
-  validates :admin_id, :subject, :message, :presence => true
+  validates :admin_id, :subject, :message, :slug, :presence => true
   validates :truncate_character, :numericality => {:only_integer => true, :grater_than => 0}
 
   before_save :update_post_message
@@ -15,8 +16,8 @@ class Post < ActiveRecord::Base
 
   scope :enabled, -> { where(" \"posts\".status = 'false' ")}
 
-  def to_param
-    "#{id}-#{RusAlpha.translate(subject.to_s).parameterize}"
+  def normalize_friendly_id(value)
+    "#{RusAlpha.translate(value.to_s).parameterize}"
   end
 
 end
