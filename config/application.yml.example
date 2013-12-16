@@ -6,13 +6,13 @@ development:
     smtp_settings:
       address: "smtp.gmail.com"
       port: 587
-      domain: 'is-valid.org'
-      user_name: "noreply@is-valid.org"
+      domain: 'some.domain'
+      user_name: "noreply@some.domain"
       password: ""
       authentication: "plain"
       enable_starttls_auto: true
   redis:
-    url: 'localhost:6379'
+    url: 'redis://localhost:6379'
 
 production:
   mailer:
@@ -22,10 +22,10 @@ production:
     smtp_settings:
       address: "smtp.gmail.com"
       port: 587
-      domain: 'is-valid.org'
-      user_name: "noreply@is-valid.org"
+      domain: 'some.domain'
+      user_name: "noreply@some.domain"
       password: ""
       authentication: "plain"
       enable_starttls_auto: true
   redis:
-    url: 'localhost:6379'
+    url: 'redis://localhost:6379'
