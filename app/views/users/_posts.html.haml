@@ -19,6 +19,6 @@
         - @post_like = post
         = render partial: 'users/social_section', :title => "I wanna share"
       .post-description-short
-        = post.message
+        = strip_tags(post.message).truncate 800
       =link_to 'read more', show_post_comments_path(post), class: 'btn-red-small'
   = will_paginate posts, class: 'posts-pager', previous_label: '', next_label: '', link_separator: ' - '
