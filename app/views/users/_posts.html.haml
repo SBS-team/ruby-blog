@@ -1,5 +1,6 @@
 .posts
   - posts.each do |post|
+    - @post_like = post
     .post
       .post-date
         .post-date-num= post.created_at.strftime('%d')
