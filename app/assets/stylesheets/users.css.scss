@@ -9,6 +9,19 @@
   padding: 0 10px 5px 15px;
   border-bottom: 1px solid #d7d7d7;
 }
+.tabs-content {
+  width:960px;
+  height:300px;
+  overflow:hidden;
+}
+.tabs-content ul {
+
+  list-style: none;
+  }
+.tabs-content ul li {
+  width:960px;
+  height:3000px;
+}
 
 .comments .avatar {
   float: left;

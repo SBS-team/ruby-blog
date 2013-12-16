@@ -1,0 +1,8 @@
+.right-block-bg
+  .rb-bg-title
+    Search
+  .rb-bg-content
+    = form_tag search_path, method: :get do
+      = text_field_tag :request, nil, class: 'text-input-white', placeholder: 'Search ...'
+      = link_to "Search", "javascript: void(0);", :id => "submit-search", class: 'btn-red-middle'
+      = hidden_field_tag :category, "in posts"
