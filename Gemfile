@@ -27,6 +27,9 @@ gem 'nokogiri', :require => 'nokogiri'
 gem 'simple_captcha', :git => 'git://github.com/Azdaroth/simple-captcha.git', :branch => 'rails-4'
 gem 'social-buttons', git: 'git://github.com/kristianmandrup/social-buttons.git'
 
+gem "resque", "~> 1.25"
+gem "resque-scheduler", "~> 2.3.1"
+
 # Use unicorn as the web server
 gem 'unicorn'
 
