@@ -8,10 +8,8 @@
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = javascript_include_tag "https://apis.google.com/js/plusone.js"
-    = javascript_include_tag "//vk.com/js/api/openapi.js?105", type: "text/javascript"
     = csrf_meta_tags
     :javascript
-      VK.init({apiId: API_ID, onlyWidgets: true});
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-26174162-1']);
       _gaq.push(['_setDomainName', 'is-valid.org']);

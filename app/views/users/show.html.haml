@@ -3,9 +3,6 @@
     .post-date-num= @post.created_at.strftime('%d')
     .post-date-month= @post.created_at.strftime('%B')
   .post-like-buttons
-    #vk_like
-      :javascript
-        VK.Widgets.Like("vk_like", {type: "mini"});
     - @post_like = @post
     = render partial: 'users/social_section', :title => "I wanna share"
   .post-title-with-btn
