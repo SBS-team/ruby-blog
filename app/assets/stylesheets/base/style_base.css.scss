@@ -335,6 +335,21 @@ a.link-large:hover {
   color: #ff0000;
 }
 // ========================= Buttons ======================= //
+.btn-red-search {
+  float: right;
+  margin: 0 35px 0 0;
+  text-decoration: none;
+  background: #c64126;
+  padding: 8px 10px 5px 10px;
+  border-radius: 5px;
+}
+
+.btn-red-search:hover {
+  color: #ffffff;
+  cursor: pointer;
+  background: #af3922;
+}
+
 .btn-red-small {
   display: inline-block;
   font: 12px Arial, Helvetica, sans-serif;
