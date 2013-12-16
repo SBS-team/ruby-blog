@@ -6,8 +6,8 @@
     #vk_like
       :javascript
         VK.Widgets.Like("vk_like", {type: "mini"});
-      - @post_like = @post
-      = render partial: 'users/social_section', :title => "I wanna share"
+    - @post_like = @post
+    = render partial: 'users/social_section', :title => "I wanna share"
   .post-title-with-btn
     %h2
       =@post.subject
