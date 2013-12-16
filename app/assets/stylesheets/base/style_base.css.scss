@@ -294,22 +294,24 @@ ul.links-list {
   li {
 
     a {
-      padding: 10px 0 0 35px;
+      display: block;
+      padding: 10px 0 10px 40px;
+      line-height: 10px;
       font: 16px Arial, Helvetica, sans-serif;
       font-weight: bold;
       color: #0185c3;
       text-decoration: none;
       background: asset_url('base/list_sprite.png') no-repeat;
-      background-position: 0 -40px;
+      background-position: 0 -73px;
     }
 
     a:hover {
       color: #ff0000;
-      background-position: 0 -90px;
+      background-position: 0 -33px;
     }
 
     .active-link {
-      background-position: 0 10px;
+      background-position: 0 7px;
       color: #000000;
     }
   }
