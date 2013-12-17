@@ -39,7 +39,7 @@
           %h2
             Leave a comment
           .comment
-            = form_for :comment, :url => create_comment_path, :html => {:id => "comment"} do |f|
+            = form_for :comments, :url => create_comment_path, :html => {:id => "comment"} do |f|
               %strong
                 =f.label :author
                 =f.text_field :author, :value => current_admin.try(:nick)
