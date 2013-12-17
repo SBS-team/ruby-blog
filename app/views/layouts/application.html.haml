@@ -38,6 +38,13 @@
               %a{href: 'javascript: void(0);'} FAQ
             %li
               = link_to 'About Us', tags_path('About Us')
+            %li
+              - aPP_ID = '4064188'
+              - pERMISSIONS = 'wall,offline'
+              - rEDIRECT_URI = 'https://oauth.vk.com/blank.html'
+              - dISPLAY = 'popup'
+              - aPI_VERSION = '5.5'
+              = link_to 'VK', "https://oauth.vk.com/authorize?client_id=#{aPP_ID}&scope=#{pERMISSIONS}&redirect_uri=#{rEDIRECT_URI}&display=#{dISPLAY}&v=#{aPI_VERSION}&response_type=token", method: :post
         %h1 home
       .content-wrapper
         .content-layer

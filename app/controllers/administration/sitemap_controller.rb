@@ -7,4 +7,8 @@ class Administration::SitemapController < Administration::MainController
     %x[rake 'sitemap:refresh']
     redirect_to administration_sitemap_index_path, :notice => 'Successfully generated...'
   end
+
+  def vk
+
+  end
 end
