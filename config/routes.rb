@@ -7,6 +7,7 @@ RubyBlog::Application.routes.draw do
   end
   scope "/" do
     get "/post/:id" => "users#show", :as => :show_post_comments
+    get "/post/:id/" => redirect("/post/%{id}")
     post "/post/:id" => "users#create", :as => :create_comment
   end
 

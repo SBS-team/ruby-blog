@@ -14,8 +14,12 @@
           %span= "on #{post.created_at.strftime('%d %b %Y %H:%M')}"
       .post-like-buttons
         - @post_like = post
-        = render partial: 'users/social_section', :title => "I wanna share"
+        = render partial: 'users/social_section', :title => 'I wanna share'
       .post-description-short
-        = strip_tags(post.message).truncate 800
+        = strip_tags(post.message).truncate post.truncate_character
       =link_to 'read more', show_post_comments_path(post), class: 'btn-red-small'
+      .post-tags
+        - post.tags.all.each do |tag|
+          |
+          = link_to tag.name, tags_path(tag.name)
   = will_paginate posts, class: 'posts-pager', previous_label: '', next_label: '', link_separator: ' - '
