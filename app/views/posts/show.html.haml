@@ -3,8 +3,7 @@
     .post-date-num= @post.created_at.strftime('%d')
     .post-date-month= @post.created_at.strftime('%B')
   .post-like-buttons
-    - @post_like = @post
-    -#= render partial: 'users/social_section', :title => "I wanna share"
+    = render partial: 'posts/social_section', title: 'I wanna share', locals: {post: @post}
   .post-title-with-btn
     %h2
       =@post.subject

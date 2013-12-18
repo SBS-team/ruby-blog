@@ -1,0 +1,6 @@
+.oor-social-buttons
+  .facebook-like
+    .fb-like{'data-href' => post_path(post), 'data-layout' => 'button_count', 'data-send' => 'false',
+            'data-show-faces' => 'false', 'data-width' => '450'}
+  .google-plus= google_plus_button(size: 'medium', href: post_path(post), annotation: 'bubble')
+  .twitter-tweet= tweet_button(url: post_path(post), text: post.subject, count: 'horizontal')

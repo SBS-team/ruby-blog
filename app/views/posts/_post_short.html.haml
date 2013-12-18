@@ -10,8 +10,7 @@
       %b= post.admin.nick
       %span= "on #{post.created_at.strftime('%d %b %Y %H:%M')}"
   .post-like-buttons
-    - @post_like = post
-    -#= render partial: 'users/social_section', :title => 'I wanna share'
+    = render partial: 'posts/social_section', title: 'I wanna share', locals: {post: post}
   .post-description-short
     = strip_tags(post.message).truncate post.truncate_character
   = link_to 'read more', post_path(post), class: 'btn-red-small'
