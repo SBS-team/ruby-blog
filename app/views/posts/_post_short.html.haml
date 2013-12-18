@@ -1,0 +1,21 @@
+.post
+  .post-date
+    .post-date-num= post.created_at.strftime('%d')
+    .post-date-month= post.created_at.strftime('%B')
+  .post-title
+    %h2
+      = link_to post.subject, post_path(post), class: 'link-large'
+    .posted-by
+      %span By
+      %b= post.admin.nick
+      %span= "on #{post.created_at.strftime('%d %b %Y %H:%M')}"
+  .post-like-buttons
+    - @post_like = post
+    -#= render partial: 'users/social_section', :title => 'I wanna share'
+  .post-description-short
+    = strip_tags(post.message).truncate post.truncate_character
+  = link_to 'read more', post_path(post), class: 'btn-red-small'
+  .post-tags
+    - post.tags.each do |tag|
+      |
+      = link_to tag.name, posts_by_tag_path(tag.name)

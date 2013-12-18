@@ -1,0 +1,11 @@
+.posts
+  - if @search_request
+    .search-request
+      - if @posts.blank?
+        %span= "Posts not find. Search query: #{@search_request}"
+      - else
+        %span= "Posts by search query: #{@search_request}"
+
+  - @posts.each do |post|
+    = render partial: 'posts/post_short', locals: {post: post}
+  = will_paginate @posts, class: 'posts-pager', previous_label: '', next_label: '', link_separator: ' - '
