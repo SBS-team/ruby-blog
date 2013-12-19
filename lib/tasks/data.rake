@@ -1,4 +1,5 @@
 namespace :data do
+
   desc "Create administrator's record. Nick - admin, username - admin, password - admin, email - admin@admin.com. Don't forget to change this!"
   task :admin => :environment do
     puts "Create administrator's record. Nick - admin, username - admin, password - admin, email - admin@admin.com. Don't forget to change this!"
@@ -17,4 +18,11 @@ namespace :data do
       post.update_attribute(:message, html.to_html)
     end
   end
+
+  desc 'Update Posts'
+  task post_update: :environment do
+    Post.find_each(&:save)
+    puts 'All Posts were updated'
+  end
+
 end
