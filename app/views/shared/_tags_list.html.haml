@@ -1,0 +1,7 @@
+.right-block
+  %h3.rb-title
+    Categories
+  .rb-content
+    %ul.links-list
+      - @tags.each do |tag|
+        %li= link_to(tag.name, posts_by_tag_path(tag.name))
