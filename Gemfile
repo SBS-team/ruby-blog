@@ -31,6 +31,8 @@ gem 'friendly_id'
 gem 'resque', '~> 1.25'
 gem 'resque-scheduler', '~> 2.3.1'
 
+gem 'vkontakte_api', '~> 1.3'
+
 # Use unicorn as the web server
 gem 'unicorn'
 
