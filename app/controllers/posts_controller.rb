@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:tags, :comments).enabled.friendly.find(params[:id])
+    @post = Post.includes(:tags, :admin, :comments).enabled.where(slug: params[:id]).last
+    render('public/404.html', status: 404, layout: false) unless @post
   end
 
   def posts_by_tag
@@ -26,6 +27,14 @@ class PostsController < ApplicationController
 
   def comment_create
 
+    @comment = Comment.create( params.permit(:comment))
+    @comment.current_admin = current_admin
+
+    if @comment.valid_with_captcha? and @comment.save
+      render :json => {:comment => render_to_string(:partial => "comment", :locals => {:comment => @comment}), :captcha => render_to_string(:partial => "captcha")}
+    else
+      render :json => {:errors => @comment.errors, :captcha => render_to_string(:partial => "captcha")}
+    end
   end
 
   private

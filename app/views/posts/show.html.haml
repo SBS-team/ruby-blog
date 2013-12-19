@@ -18,26 +18,28 @@
       |
       = link_to tag.name, posts_by_tag_path(tag.name)
   .comments
-    %h2
-      Comments
-  %ul.tabs
-
-    %li
-      %a{href: "#comment"} Comments
-    %li
-      %a{href: "#fb"} Facebook Comment
-    - @post.comments.each do |comment|
-      -#= render :partial => 'comment', :locals => {:comment => comment}
-    .clear
+    %ul.tabs
+      %li
+        %a{href: '#comments'} All comments
+      %li
+        %a{href: '#fb'} Facebook Comment
+      %li
+        %a{href: '#addcomment'} Add Comment
     .tabs-content
       %ul
-        %li#comment
-          %h2
-            Leave a comment
-          .comment
-            -#= form_for @post.comments.build, url: create_comment_path(@post), method: :post, remote: true do  |f|
-              -#= f.text_field :author, :value => current_admin.try(:nick)
-                -#= form_for :comment, :url => create_comment_path, :html => {:id => "comment"}, method: :post do |f|
+        %li#comments
+          - @post.comments.each do |comment|
+            .comment
+              %strong
+                = "#{comment.author} | #{l(comment.created_at, :format => :long)}"
+              .avatar
+                %span
+              .message
+                %span
+                  = simple_format(comment.content)
+        %li#addcomment
+          .comment-form
+            = form_for :comment, :url => comment_create_path(@post), :html => {:id => 'comment'}, method: :post do |f|
               %strong
                 = f.hidden_field :post_id, value: @post.id
                 = f.label :author
@@ -48,12 +50,9 @@
                   =f.text_area :content
                   .submit
                     .captcha_field
-                      = render :partial => "captcha"
+                      = render :partial => 'captcha'
                     =f.submit :save
-
         %li#fb
-          -#= render :partial => "fb"
-          .clear
-  .clear
+          = render partial: 'posts/fb'
   %center.g_banner
-    -#= render :partial => "banner_big"
+    = render :partial => 'banner_big'
