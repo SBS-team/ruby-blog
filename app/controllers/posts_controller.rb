@@ -5,8 +5,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:tags, :admin, :comments).enabled.where(slug: params[:id]).last
-    render('public/404.html', status: 404, layout: false) unless @post
+    @post = Post.includes(:tags, :admin, :comments).enabled.find_by_slug!(params[:id])
   end
 
   def posts_by_tag
