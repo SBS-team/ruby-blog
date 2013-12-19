@@ -1,6 +1,7 @@
 class Administration::PostsController < Administration::MainController
 
   before_filter :find_post, :only => [:update, :destroy, :edit]
+  include VkontakteHelper
 
   def index
     @search = Post.includes(:admin).search(posts_params || {'meta_sort' => 'id.asc'})
@@ -10,6 +11,10 @@ class Administration::PostsController < Administration::MainController
   def update
     if @post.update_attributes(posts_params[:post])
       flash[:notice] = 'Post successfully updated'
+      unless @post.status
+        message += repost_on_group_wall(@post) ? ' and' : ' but don\'t'
+        message += ' reposted on Vkontakte wall.'
+      end
       redirect_to administration_post_path
     else
       flash[:error] = @post.errors.full_messages
@@ -28,7 +33,12 @@ class Administration::PostsController < Administration::MainController
   def create
     @post = current_admin.posts.build(posts_params[:post])
     if @post.save
-      flash[:notice] = 'Post successfully saved'
+      message = 'Post successfully saved'
+      unless @post.status
+        message += repost_on_group_wall(@post) ? ' and' : ' but don\'t'
+        message += ' reposted on Vkontakte wall.'
+      end
+      flash[:notice] = message
       redirect_to administration_post_path(@post)
     else
       flash[:error] = @post.errors.full_messages
