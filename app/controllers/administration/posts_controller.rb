@@ -1,6 +1,7 @@
 class Administration::PostsController < Administration::MainController
 
   before_filter :find_post, :only => [:update, :destroy, :edit]
+  include VkontakteHelper
 
   def index
     @search = Post.includes(:admin).search(posts_params || {'meta_sort' => 'id.asc'})
@@ -10,6 +11,10 @@ class Administration::PostsController < Administration::MainController
   def update
     if @post.update_attributes(posts_params[:post])
       flash[:notice] = 'Post successfully updated'
+      unless @post.status
+        message += repost_on_group_wall(@post) ? ' and' : ' but don\'t'
+        message += ' reposted on Vkontakte wall.'
+      end
       redirect_to administration_post_path
     else
       flash[:error] = @post.errors.full_messages
@@ -28,7 +33,12 @@ class Administration::PostsController < Administration::MainController
   def create
     @post = current_admin.posts.build(posts_params[:post])
     if @post.save
-      flash[:notice] = 'Post successfully saved'
+      message = 'Post successfully saved'
+      unless @post.status
+        message += repost_on_group_wall(@post) ? ' and' : ' but don\'t'
+        message += ' reposted on Vkontakte wall.'
+      end
+      flash[:notice] = message
       redirect_to administration_post_path(@post)
     else
       flash[:error] = @post.errors.full_messages
@@ -46,6 +56,23 @@ class Administration::PostsController < Administration::MainController
     @tags = []
     @post= Post.where(:id => params[:id]).first || Post.new
     render :layout => 'application'
+  end
+
+  def load_repost_settings
+    @vk_params = YAML.load_file(File.join(Rails.root, 'config', 'application.yml'))[Rails.env]['vk']
+    render 'repost_settings'
+  end
+
+  def save_repost_settings
+    full_path_to_yaml = File.join(Rails.root, 'config', 'application.yml')
+    config = YAML.load_file(full_path_to_yaml)
+    config[Rails.env]['vk'].merge!(params[:vk])
+    File.open(full_path_to_yaml, 'w') {|f| f.write config.to_yaml }
+    flash[:notice] = 'Save settings successfully'
+  rescue
+    flash[:error] = 'Settings not saved'
+  ensure
+    redirect_to :back
   end
 
   private

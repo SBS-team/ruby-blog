@@ -31,4 +31,6 @@ RubyBlog::Application.routes.draw do
   end
   delete '/administration/tags/destroy/:id' => 'administration/tags#destroy!', :as => :administration_destroy_tag
   get '/administration/search_tag' => 'administration/tags#search_tag', :as => :administration_search_tag
+  get '/administration/load_repost_settings' => 'administration/posts#load_repost_settings', :as => :load_repost_settings
+  post '/administration/save_repost_settings' => 'administration/posts#save_repost_settings', :as => :save_repost_settings
 end
