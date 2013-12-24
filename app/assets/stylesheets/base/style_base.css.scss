@@ -107,6 +107,13 @@ body {
 .posts {
   padding: 0 0 0 0;
   margin: 0 0 0 0;
+
+  .search-request {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: #000000;
+    border-bottom: 1px solid #d7dbdb;
+  }
 }
 
 .post {
@@ -231,6 +238,34 @@ body {
     color: #ff0000;
   }
 }
+
+.comments {
+  margin: 10px 0 0 0;
+  padding: 0 0 0 0;
+
+  .comment {
+    display: block;
+  }
+
+  .comment-form {
+
+  }
+
+  .comment:after {
+    clear: both;
+    content: '';
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+
+  h2 {
+    color: #0185c3;
+    text-shadow: #0c155e 0 -1px 0.5px;
+  }
+
+}
+
 // ========================= Right blocks ================== //
 .right-block-bg {
   position: relative;

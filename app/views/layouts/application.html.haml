@@ -1,5 +1,5 @@
 !!!
-%html{:dir => "ltr", :xmlns => "http://www.w3.org/1999/xhtml"}
+%html{:dir => 'ltr', :xmlns => 'http://www.w3.org/1999/xhtml'}
   %head
     %title= meta_content[:title]
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
@@ -33,23 +33,18 @@
             %li
               = link_to 'Home', root_path
             %li
-              = link_to 'News', tags_path('News')
+              = link_to 'News', posts_by_tag_path('News')
             %li
               %a{href: 'javascript: void(0);'} FAQ
             %li
-              = link_to 'About Us', tags_path('About Us')
+              = link_to 'About Us', posts_by_tag_path('About Us')
         %h1 home
       .content-wrapper
         .content-layer
           .right-content
             = render partial: 'shared/search_form'
-            .right-block
-              %h3.rb-title
-                Categories
-              .rb-content
-                %ul.links-list
-                  - @tags.each do |tag|
-                    %li= link_to(tag.name, tags_path(tag.name))
+            = render partial: 'shared/tags_list'
+            = yield :right_block
           .content
             = yield
       .footer

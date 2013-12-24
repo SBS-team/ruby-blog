@@ -2,9 +2,7 @@
   .rb-bg-title
     Search
   .rb-bg-content
-    = form_tag search_path, method: :get do
+    = form_tag posts_search_path, method: :get do
       = text_field_tag :request, nil, class: 'text-input-white', placeholder: 'Search query ...'
-      = link_to 'javascript: void(0);', :id => 'submit-search', class: 'btn-red-search' do
+      = link_to 'javascript: void(0);', id: 'submit-search', class: 'btn-red-search' do
         = image_tag 'base/search.png', width: 20, height: 20
-
-      = hidden_field_tag :category, 'in posts'
