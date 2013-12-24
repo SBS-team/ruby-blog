@@ -70,7 +70,7 @@ class Administration::PostsController < Administration::MainController
     File.open(full_path_to_yaml, 'w') {|f| f.write config.to_yaml }
     flash[:notice] = 'Save settings successfully'
   rescue
-    flash[:error] = 'Save settings not saved'
+    flash[:error] = 'Settings not saved'
   ensure
     redirect_to :back
   end
