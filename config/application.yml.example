@@ -13,6 +13,11 @@ development:
       enable_starttls_auto: true
   redis:
     url: 'redis://localhost:6379'
+  vk:
+    access_token: '2bfefd7da6036565895f57a331d05b210fb328eb8d49e469073172b413ac105e9192cc9fef62fd2ce99ac'
+    group_id: '63052587'
+    from_group: '1'
+    signed: '0'
 
 production:
   mailer:
