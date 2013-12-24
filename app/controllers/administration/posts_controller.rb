@@ -58,6 +58,23 @@ class Administration::PostsController < Administration::MainController
     render :layout => 'application'
   end
 
+  def load_repost_settings
+    @vk_params = YAML.load_file(File.join(Rails.root, 'config', 'application.yml'))[Rails.env]['vk']
+    render 'repost_settings'
+  end
+
+  def save_repost_settings
+    full_path_to_yaml = File.join(Rails.root, 'config', 'application.yml')
+    config = YAML.load_file(full_path_to_yaml)
+    config[Rails.env]['vk'].merge!(params[:vk])
+    File.open(full_path_to_yaml, 'w') {|f| f.write config.to_yaml }
+    flash[:notice] = 'Save settings successfully'
+  rescue
+    flash[:error] = 'Save settings not saved'
+  ensure
+    redirect_to :back
+  end
+
   private
   def posts_params
     params.permit(post: [:subject, :message, :status, :truncate_character])
