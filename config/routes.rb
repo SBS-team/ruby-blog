@@ -11,6 +11,7 @@ RubyBlog::Application.routes.draw do
   end
 
   resources :posts, only: [:index, :show]
+  resources :subscribes, only: [:create]
   get '/categories/:name' => 'posts#posts_by_tag', :as => :posts_by_tag
   post '/posts/:name/comment' => 'posts#comment_create', :as => :comment_create
   get '/search' => 'posts#posts_search', :as => :posts_search
