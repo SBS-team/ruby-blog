@@ -5,12 +5,18 @@ class SubscribesController < ApplicationController
   end
 
   def create
-    @sub = Subscribe.new()
+    @sub = Subscribe.new(sub_params)
+    @sub.sub_token = SecureRandom.urlsafe_base64(nil, false)
+    @sub.unsub_token = SecureRandom.urlsafe_base64(nil, false)
     if @sub.save
-      redirect_to posts_path, notice: 'A mail was sent to your address to confirm it'
+      redirect_to :back, notice: 'A mail was sent to your address to confirm it'
     else
-      render nothing: true, notice: 'Enter a valid email'
+      redirect_to :back, notice: 'Enter a valid email'
     end
+  end
+
+  def subscribe
+
   end
 
   def unsubscribe
@@ -20,7 +26,7 @@ class SubscribesController < ApplicationController
   private
 
   def sub_params
-    params.permit(:email, :confirmed_at, :sub_token, :unsub_token)
+    params.require(:subscribe).permit(:email, :confirmed_at, :sub_token, :unsub_token)
   end
 
 end

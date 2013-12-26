@@ -1,0 +1,3 @@
+<p> Please confirm your email by visiting the link below
+    <%= link_to 'This is my Email', subscribe_url(email: @conf_subscribe.email, sub_token: @conf_subscribe.sub_token, host: "127.0.0.1:3000") %>
+</p>

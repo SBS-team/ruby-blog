@@ -2,6 +2,6 @@
   .rb-bg-title
     Subscribe
   .rb-bg-content
-    = form_for :subscribe, url: {action: 'create', controller: 'subscribes'}, remote: true  do |f|
+    = form_for :subscribe, url: {action: 'create', controller: 'subscribes'} do |f|
       = f.email_field :email, class: 'text-input-white', placeholder: 'E-mail ...'
       = f.submit 'Subscribe', id: 'submit-search', class: 'btn-red-search'
