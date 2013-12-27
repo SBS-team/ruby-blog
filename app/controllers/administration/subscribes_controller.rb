@@ -13,7 +13,7 @@ class Administration::SubscribesController < Administration::MainController
   end
 
   def conf_sub_month
-    @confirm_month_subs = Subscribe.where('confirmed_at >= ? AND confirmed_at IS NOT NULL', 30.days.ago).paginate(:per_page => 20, :page => params[:page])
+    @confirm_month_subs = Subscribe.where('confirmed_at >= ?', 30.days.ago).paginate(:per_page => 20, :page => params[:page])
   end
 
 end
