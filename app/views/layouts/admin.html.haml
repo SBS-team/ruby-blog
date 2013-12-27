@@ -20,12 +20,18 @@
               =link_to "Logout", destroy_admin_session_path, :method => :delete
         #main-navigation
           %ul.wat-cf
-            %li{has_active_class?(administration_admins_path)}= link_to "Admins", administration_admins_path
-            %li{has_active_class?(administration_posts_path)}= link_to "Posts",administration_posts_path
-            %li{has_active_class?(administration_comments_path)}= link_to "Comments", administration_comments_path
-            %li{has_active_class?(administration_tags_path)}= link_to "Tags", administration_tags_path
-            %li{has_active_class?(administration_sitemap_index_path)}= link_to "SiteMap", administration_sitemap_index_path
-            %li{has_active_class?(administration_subscribes_path)}= link_to "Subscribes", administration_subscribes_path
+            %li
+              = nav_link_to 'Admins', administration_admins_path, 'admins'
+            %li
+              = nav_link_to 'Posts', administration_posts_path, 'posts'
+            %li
+              = nav_link_to 'Comments', administration_comments_path, 'comments'
+            %li
+              = nav_link_to 'Tags', administration_tags_path, 'tags'
+            %li
+              = nav_link_to 'SiteMap', administration_sitemap_index_path, 'sitemap'
+            %li
+              = nav_link_to 'Subscribes', administration_subscribes_path, 'subscribes'
       #wrapper.wat-cf
         .flash
           - flash.each do |type, message|
