@@ -30,12 +30,12 @@ RubyBlog::Application.configure do
   config.action_mailer.default_url_options = { :host => "127.0.0.1" }
 
   config.action_mailer.smtp_settings = {
-    address:              "smtp.gmail.com",
+    address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'is-valid.org',
-    user_name:            "noreply@is-valid.org",
-    password:             "",
-    authentication:       "plain",
+    domain:               'mail.google.com',
+    user_name:            'emailfaceit@gmail.com',
+    password:             'hiddenfile',
+    authentication:       :plain,
     enable_starttls_auto: true
   }
 

@@ -11,7 +11,11 @@ RubyBlog::Application.routes.draw do
   end
 
   resources :posts, only: [:index, :show]
-  resources :subscribes, only: [:create]
+  resources :subscribes, only: [:create] do
+    collection do
+      get '/:sub_token', action: 'subscribe',  :as => :subscribe
+    end
+  end
 
   get '/categories/:name' => 'posts#posts_by_tag', :as => :posts_by_tag
   post '/posts/:name/comment' => 'posts#comment_create', :as => :comment_create
@@ -36,5 +40,5 @@ RubyBlog::Application.routes.draw do
   get '/administration/search_tag' => 'administration/tags#search_tag', :as => :administration_search_tag
   get '/administration/load_repost_settings' => 'administration/posts#load_repost_settings', :as => :load_repost_settings
   post '/administration/save_repost_settings' => 'administration/posts#save_repost_settings', :as => :save_repost_settings
-  get '/subscribes/:email/:sub_token' => 'subscribes#subscribe', :as => :subscribe
+  #get '/subscribes/:email/:sub_token' => 'subscribes#subscribe', :as => :subscribe
 end

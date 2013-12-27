@@ -1,9 +1,5 @@
 class SubscribesController < ApplicationController
 
-  def new
-
-  end
-
   def create
     @sub = Subscribe.new(sub_params)
     @sub.sub_token = SecureRandom.urlsafe_base64(nil, false)
@@ -16,7 +12,14 @@ class SubscribesController < ApplicationController
   end
 
   def subscribe
-
+    conf = Subscribe.find_by_sub_token(params[:sub_token])
+    if conf
+      conf.confirmed_at = DateTime.now
+      conf.sub_token = nil
+      conf.save
+    else
+      redirect_to root_path, notice: 'Email already saved'
+    end
   end
 
   def unsubscribe
