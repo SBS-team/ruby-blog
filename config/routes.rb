@@ -31,6 +31,13 @@ RubyBlog::Application.routes.draw do
       end
       resources :comments, :only => [:new, :create]
     end
+    resources :subscribes, only: [:index] do
+      collection do
+        get '/month', action: 'subscribe_month',  :as => :subscribe_month
+        get '/confirmed', action: 'conf_subscribe',  :as => :conf_subscribe
+        get '/confirmed/month', action: 'conf_sub_month',  :as => :conf_sub_month
+      end
+    end
     resources :comments, :except => [:new, :create]
     resources :tags
     resources :sitemap, :only => [:index, :create]
@@ -40,5 +47,5 @@ RubyBlog::Application.routes.draw do
   get '/administration/search_tag' => 'administration/tags#search_tag', :as => :administration_search_tag
   get '/administration/load_repost_settings' => 'administration/posts#load_repost_settings', :as => :load_repost_settings
   post '/administration/save_repost_settings' => 'administration/posts#save_repost_settings', :as => :save_repost_settings
-  #get '/subscribes/:email/:sub_token' => 'subscribes#subscribe', :as => :subscribe
+
 end
