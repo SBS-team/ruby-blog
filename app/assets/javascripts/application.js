@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require users
+//= require subscribe
 
 $(document).ready(function(){
    $("#submit-search").click(function(){

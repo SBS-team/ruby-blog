@@ -4,10 +4,11 @@ class SubscribesController < ApplicationController
     @sub = Subscribe.new(sub_params)
     @sub.sub_token = SecureRandom.urlsafe_base64(nil, false)
     @sub.unsub_token = SecureRandom.urlsafe_base64(nil, false)
-    if @sub.save
+    if !@sub.email.empty? && @sub.save
       redirect_to :back, notice: 'A mail was sent to your address to confirm it'
     else
       redirect_to :back, notice: 'Enter a valid email'
+      render status: :error
     end
   end
 
@@ -17,8 +18,10 @@ class SubscribesController < ApplicationController
       conf.confirmed_at = DateTime.now
       conf.sub_token = nil
       conf.save
+      render status: :ok
     else
-      redirect_to root_path, notice: 'Email already saved'
+      redirect_to root_path, notice: 'Email already confirmed or token is wrong'
+      render status: :error
     end
   end
 

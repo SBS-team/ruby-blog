@@ -6,3 +6,41 @@
  *= require users
  *= require base/style_base
 */
+
+.popup_dialog {
+  font-size: 24px;
+  width: 200px;
+  min-height: 200px;
+  margin: -100px 0 0 -100px;
+  background: #dfe6e9;
+  border: 1px solid #c2c2c2;
+  border-radius: 7px 7px 7px 7px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+.popup_wrap {
+  padding: 20px 20px 20px 20px;
+  width: 160px;
+  position: relative;
+}
+
+.popup_close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 24px;
+  width: 24px;
+  background: asset_url('close.png') 0 0 no-repeat;
+  cursor: pointer;
+}
+
+.popup_dialog .popup_error {
+  color: #FF0000;
+}
+
+.loading {
+  background-image: asset_url('loading.gif');
+}
+
