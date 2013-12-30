@@ -4,6 +4,9 @@
 // = require ckeditor/ckeditor
 // = require jquery
 // = require jquery_ujs
+// = require jquery.migrate
+// = require jquery.autocomplete
+
 
 $(document).ready(function() {
     $("#tag_name").autocomplete("/administration/search_tag");

@@ -7,7 +7,7 @@ class SubscribesController < ApplicationController
     if @sub.save
       redirect_to :back, notice: 'A mail was sent to your address to confirm it'
     else
-      render :nothing, status: :error
+      render nothing: true, status: :error
     end
   end
 
