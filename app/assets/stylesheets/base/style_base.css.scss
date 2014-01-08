@@ -336,6 +336,10 @@ body {
   margin: 0 0 0 5px;
 }
 
+.right-block-bg input.loading {
+  background-image: asset_url('loading.gif');
+}
+
 // ========================= Links List ==================== //
 ul.links-list {
   list-style: none;
