@@ -320,6 +320,22 @@ body {
     margin: -10px 10px 0 20px;
   }
 }
+
+/*----------------------------------Subscribe block-------------------------------------*/
+
+.right-block-bg input[type="submit"] {
+  background: #c64126 asset_url('base/search.png') center center no-repeat;
+  border: none;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  height: 36px;
+  width: 40px;
+  text-indent: -9999em;
+  margin: 0 0 0 5px;
+}
+
 // ========================= Links List ==================== //
 ul.links-list {
   list-style: none;
