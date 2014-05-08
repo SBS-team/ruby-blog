@@ -30,6 +30,7 @@ Installation instruction(under linux):
         bundle install
 
 - Установить nokogiri зависимости:
+    
         sudo apt-get install libxml2 libxml2-dev libxslt1.1 libxslt1-dev
 
 - Создать файл настроек подключения к серверу БД 'config/database.yml' на основании файла 'config/database.yml.example'
