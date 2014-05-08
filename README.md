@@ -1,31 +1,73 @@
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/intale/ruby-blog)
 Installation instruction(under linux):
+# Ruby-blog
 
-1.Install right ruby version
-rvm install ruby-1.9.2-p290
-rvm use ruby-1.9.2-p290
-rvm gemset create ruby-blog
+## Описание сайта
 
-2.Install PostgreSQL:
-sudo apt-get install postgresql pgadmin3
-sudo apt-get install libpq-dev libpq5
-sudo -u postgres psql postgres
-\password postgres
-sudo -u postgres createdb mydb
+ Ruby-blog - это блог, целью которого является поделится опытом в области разработки на Ruby on Rails.
+ На вкладке Home выводится список всех публикаций, написанных нашими разработчиками.
+ Эти посты носят информационный и ознакомительный характер и освещают некоторые вопросы связанные с разработкой и поддержкой RubyOnRails приложений.
+ Эти статьи могут оказаться полезными как соискателям трудоустройства, так и потенциальным заказчикам при формировании задачи и формулировании   технического задания.
+ Для более удобного поиска необходимой информации все публикации разделены на категории в зависимости от тематики и имеют соответствующие теги.
+ Постоянные посетители нашего сайта могут подписаться на RSS ленту.
+ Ha вкладке About Us  размещена краткая информация о каждом члене нашей команды: навыки, опыт.
+## Requirements
 
-3.Install nokogiri dependencies:
-sudo apt-get install libxml2 libxml2-dev libxslt1.1 libxslt1-dev
+  * ruby 2.0.0p247
+  * Rails 4.0.0
+  * PostgreSQL > 9.2
 
-4.Create database.yml
-Just copy database.yml.example and configure your db setup
+## Инструкция по запуску сайта ruby-blog
 
-5.Finishing installation
-bundle install
-rake db:create
-rake db:migrate
-rake data:admin
+- Зайти на репизиторий ruby-blog https://github.com/SBS-team/ruby-blog
+- Клонировать проект:
+
+        git clone https://github.com/SBS-team/ruby-blog.git
+
+- Перейти в папку с проектом
+- Установить гемы:
+
+        bundle install
+
+- Установить nokogiri зависимости:
+        sudo apt-get install libxml2 libxml2-dev libxslt1.1 libxslt1-dev
+
+- Создать файл настроек подключения к серверу БД 'config/database.yml' на основании файла 'config/database.yml.example'
+- Создать БД
+
+        rake db:create
+
+- Выполнить миграции БД:
+
+        rake db:migrate
+
+        rake data:admin
+- Наполнить БД даными:
+        rake db:seed
+- В папке с клонированным проектом:
+
+        rails s
 
 
-Now go to http://your_host/administration/admins to create new posts/admins etc.
+- Теперь перейдите http://your_host/administration/admins/new чтобы создать нового админа который может создавать посты.
 
-Have fun
+  Откройте ваш браузер и в адресной строке введите localhost:3000
+ 
+##Database
+
+This application uses PostgreSQL with ActiveRecord.
+
+##Development
+
+- Template Engine: Haml
+
+Current Staging Location
+------------------------
+
+[is-valid.org](http://is-valid.org/)
+
+
+License
+-------
+
+ruby-blog is made available under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
