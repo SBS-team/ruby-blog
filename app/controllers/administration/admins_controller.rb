@@ -60,7 +60,7 @@ class Administration::AdminsController < Administration::MainController
   end
 
   def find_admin
-    @admin=Admin.find_by_id(params[:id])
+    @admin = Admin.find(params[:id])
     unless @admin
       flash[:error]="Admin with id #{params[:id]} does not exist!"
       redirect_to administration_admins_path
