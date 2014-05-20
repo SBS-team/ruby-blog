@@ -47,7 +47,7 @@ class Administration::CommentsController < Administration::MainController
   end
 
   def build_comment
-    @post = Post.find(params[:post_id])
+    @post = Post.friendly.find(params[:post_id])
     @comment = @post.comments.build(params[:comment] ? params.require(:comment).permit(:author, :content) : {})
     @comment.current_admin=current_admin.id
   end
