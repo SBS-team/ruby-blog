@@ -13,21 +13,21 @@
             %td
               = label_tag 'Group ID'
             %td
-              = text_field_tag 'vk[group_id]', @vk_params['group_id']
+              = text_field_tag 'vk[group_id]', get_vk_params('group_id')
           %tr
             %td
               = label_tag 'Access token'
             %td
-              = text_field_tag 'vk[access_token]', @vk_params['access_token']
+              = text_field_tag 'vk[access_token]', get_vk_params('access_token')
           %tr
             %td
               = label_tag 'Posting in the name of'
             %td
-              = select_tag 'vk[from_group]', options_for_select([['group', 1],['current user', 0]], @vk_params['from_group'].to_i)
+              = select_tag 'vk[from_group]', options_for_select([['group', 1],['current user', 0]], get_vk_params('from_group').to_i)
           %tr
             %td
               = label_tag 'Add signing-up'
             %td
-              = select_tag 'vk[signed]', options_for_select([['YES', 1],['NO', 0]], @vk_params['signed'].to_i)
+              = select_tag 'vk[signed]', options_for_select([['YES', 1],['NO', 0]], get_vk_params('signed').to_i)
         %br
-        = submit_tag 'Save settings'
+        = submit_tag 'Save settings'  
