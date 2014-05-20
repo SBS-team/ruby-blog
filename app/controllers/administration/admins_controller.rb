@@ -3,7 +3,7 @@ class Administration::AdminsController < Administration::MainController
   before_filter :find_admin, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @search = Admin.search(admin_params || {"meta_sort" => "id.asc"})
+    @search = Admin.search((admin_params if params[:admin]) || {"meta_sort" => "id.asc"})
     @admins = @search.result(distinct: true).paginate(:per_page => 10, :page => params[:page])
   end
 
